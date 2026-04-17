@@ -31,6 +31,19 @@ class articleController {
         article: {id: articleId, ...newArticle}
     })
     }
+    async getArticleBySlug(req, res){
+        const article = await articleModel.findOne(req.params.slug)
+        res.status(201).json({article: article})
+    }
+    async updateArticle(req, res){
+        const updatedData = req.body;
+
+        const affectedRows = await articleModel.update(req.params.id, updatedData);
+        res.status(201).json({
+            message: `updated article with id ${req.params.id}`,
+            affectedRows: affectedRows
+        });
+    }
 }
 
 module.exports = articleController;
