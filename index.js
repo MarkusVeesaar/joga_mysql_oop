@@ -12,6 +12,9 @@ const articleController = new articleControllerClass()
 const articleRoutes = require('./routes/article');
 app.use('/', articleRoutes);
 
+const authorRoutes = require('./routes/author');
+app.use('/author', authorRoutes);
+
 // app start point
 app.listen(3025, () => {
     console.log('App is started at http://localhost:3025')
